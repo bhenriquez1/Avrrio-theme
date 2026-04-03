@@ -5,6 +5,29 @@
   {% assign featured_product = all_products['avrrio-french-roast'] %}
 {% endif %}
 
+<main class="home">
+  <section class="home-hero section-shell">
+    <div class="home-hero__content">
+      <img class="home-hero__logo" src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio Coffee logo">
+      <p class="home-hero__eyebrow">Avrrio Coffee</p>
+      <h1 class="home-hero__title">Simple. Strong. Daily Fuel.</h1>
+      <p class="home-hero__copy">
+        Avrrio starts with one thing: a dependable daily coffee.
+        Clean, consistent, and built for people who value quality without complication.
+      </p>
+
+      <div class="home-hero__actions">
+        <a href="/collections/avrrio-coffee" class="btn">Shop Coffee</a>
+        {% if featured_product %}
+          <a href="{{ featured_product.url }}" class="btn btn--secondary">View Product</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="home-hero__product-panel">
+      <article class="product-card">
+        {% if featured_product and featured_product.featured_image %}
+          <a href="{{ featured_product.url }}" class="product-card__image-link">
 <div class="home-hero">
   <div class="home-hero__content">
     <img class="home-hero__logo" src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio Coffee logo">
@@ -30,6 +53,59 @@
               alt="{{ featured_product.featured_image.alt | default: featured_product.title | escape }}"
               loading="lazy"
             >
+          </a>
+        {% endif %}
+
+        <div class="product-card__content">
+          {% if featured_product %}
+            <p class="product-card__eyebrow">Our first product</p>
+            <h2 class="product-card__title">Avrrio Coffee — French Roast</h2>
+            <p class="product-card__description">
+              French Roast — bold, smooth, and built for everyday drinking.
+              Designed to be your go-to cup, not a one-time purchase.
+            </p>
+            <p class="product-card__price">{{ featured_product.price | money }}</p>
+          {% else %}
+            <p class="product-card__eyebrow">Our first product</p>
+            <h2 class="product-card__title">Avrrio Coffee — French Roast</h2>
+            <p class="product-card__description">Launching soon with the same focus on consistency and everyday use.</p>
+          {% endif %}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-shell home-block">
+    <h2 class="home-block__title">Why Avrrio</h2>
+    <p class="home-block__copy">
+      We’re not launching with 20 products.
+      We’re starting with one — and doing it right.
+    </p>
+    <p class="home-block__copy">
+      No distractions. No overcomplication.
+      Just a clean product you can rely on every day.
+    </p>
+  </section>
+
+  <section class="section-shell home-block">
+    <h2 class="home-block__title">Built for Repeat Customers</h2>
+    <ul class="home-block__list">
+      <li>Consistent flavor you can rely on</li>
+      <li>Simple, fast checkout experience</li>
+      <li>Clean product design — no confusion</li>
+      <li>Built to become part of your daily routine</li>
+    </ul>
+  </section>
+
+  <section class="section-shell home-block">
+    <h2 class="home-block__title">This Is Just the Beginning</h2>
+    <p class="home-block__copy">
+      Avrrio is being built as a clean, focused brand.
+      One product today. A full ecosystem tomorrow.
+    </p>
+    <p class="home-block__copy">We start with coffee — and expand with intention.</p>
+  </section>
+</main>
           {% endif %}
         </a>
         <div class="product-card__content">
