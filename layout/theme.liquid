@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ request.locale.iso_code }}">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>
+    {% if page_title != blank %}
+      {{ page_title }}
+      {% if current_tags %} — tagged "{{ current_tags | join: ', ' }}"{% endif %}
+      {% if current_page != 1 %} — Page {{ current_page }}{% endif %}
+      {% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}
+    {% else %}
+      {{ shop.name }}
+    {% endif %}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
   <title>{{ shop.name }}</title>
   {{ content_for_header }}
   {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
   <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="{{ shop.name }}">
+        <img src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio">
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/collections/avrrio-coffee">Catalog</a>
     <div class="site-header__inner section-shell">
       <a href="/" class="site-header__brand" aria-label="Avrrio home">
         <picture>
@@ -34,6 +61,30 @@
   {{ content_for_layout }}
 
   <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio">
+          <p>
+            Avrrio is being built as a clean, focused brand.
+            One product today. A broader ecosystem tomorrow.
+          </p>
+        </div>
+
+        <div class="site-footer__links">
+          <h3>Navigation</h3>
+          <a href="/">Home</a>
+          <a href="/collections/avrrio-coffee">Catalog</a>
+          <a href="/pages/about">About</a>
+        </div>
+
+        <div class="site-footer__links">
+          <h3>Support</h3>
+          <a href="/search">Search</a>
+          <a href="/policies/privacy-policy">Privacy</a>
+          <a href="/cart">Cart</a>
+        </div>
+      </div>
     <div class="site-footer__inner section-shell">
       <h2 class="site-footer__title">About</h2>
       <p>
