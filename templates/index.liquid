@@ -1,6 +1,50 @@
-<div class="center">
-<img src="{{ 'avrrio-logo.png' | asset_url }}" style="max-width:180px;"><br>
-<h1>Avrrio Coffee</h1>
-<p>Simple. Strong. Daily Fuel.</p>
-<a href="/products/avrrio-french-roast" class="btn">Buy Now</a>
+{% assign featured_collection = collections['avrrio-coffee'] %}
+{% assign featured_product = featured_collection.products.first %}
+
+{% if featured_product == blank %}
+  {% assign featured_product = all_products['avrrio-french-roast'] %}
+{% endif %}
+
+<div class="home-hero">
+  <div class="home-hero__content">
+    <img class="home-hero__logo" src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio Coffee logo">
+    <p class="home-hero__eyebrow">Avrrio Coffee</p>
+    <h1 class="home-hero__title">Simple. Strong. Daily Fuel.</h1>
+    <p class="home-hero__copy">A clean, reliable roast designed to fit your daily rhythm.</p>
+
+    {% if featured_product %}
+      <a href="{{ featured_product.url }}" class="btn">Shop {{ featured_product.title }}</a>
+    {% else %}
+      <a href="/collections/all" class="btn">Shop Coffee</a>
+    {% endif %}
+  </div>
+
+  <div class="home-hero__product-panel">
+    {% if featured_product %}
+      <article class="product-card">
+        <a href="{{ featured_product.url }}" class="product-card__image-link">
+          {% if featured_product.featured_image %}
+            <img
+              class="product-card__image"
+              src="{{ featured_product.featured_image | image_url: width: 760 }}"
+              alt="{{ featured_product.featured_image.alt | default: featured_product.title | escape }}"
+              loading="lazy"
+            >
+          {% endif %}
+        </a>
+        <div class="product-card__content">
+          <h2 class="product-card__title">{{ featured_product.title }}</h2>
+          <p class="product-card__price">{{ featured_product.price | money }}</p>
+          <a href="{{ featured_product.url }}" class="btn btn--secondary">View Product</a>
+        </div>
+      </article>
+    {% else %}
+      <article class="product-card">
+        <div class="product-card__content">
+          <h2 class="product-card__title">Featured product coming soon</h2>
+          <p class="product-card__price">Check back shortly for our first roast.</p>
+        </div>
+      </article>
+    {% endif %}
+  </div>
 </div>

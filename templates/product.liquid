@@ -1,11 +1,27 @@
-<div class="center">
-<h1>{{ product.title }}</h1>
-{% if product.featured_image %}
-<img src="{{ product.featured_image | image_url: width: 800 }}">
-{% endif %}
-<p>{{ product.price | money }}</p>
-<form method="post" action="/cart/add">
-<input type="hidden" name="id" value="{{ product.variants.first.id }}">
-<button class="btn">Buy Now</button>
-</form>
+<div class="product-page">
+  <div class="product-page__media">
+    {% if product.featured_image %}
+      <img
+        class="product-page__image"
+        src="{{ product.featured_image | image_url: width: 1200 }}"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+      >
+    {% endif %}
+  </div>
+
+  <div class="product-page__details">
+    <h1 class="product-page__title">{{ product.title }}</h1>
+    <p class="product-page__price">{{ product.price | money }}</p>
+
+    <form method="post" action="/cart/add" class="product-page__buy-box">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+      <button class="btn product-page__cta" type="submit">Add to cart</button>
+
+      <ul class="product-page__highlights">
+        <li>Freshly roasted for daily consistency</li>
+        <li>Balanced body with smooth finish</li>
+        <li>Built for drip, pour-over, or French press</li>
+      </ul>
+    </form>
+  </div>
 </div>
