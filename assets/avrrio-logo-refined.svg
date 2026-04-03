@@ -1,0 +1,8 @@
+<svg width="440" height="104" viewBox="0 0 440 104" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Avrrio refined logo</title>
+  <desc id="desc">Avrrio blue wordmark with gold orbit accent for header use.</desc>
+  <rect width="440" height="104" fill="transparent"/>
+  <path d="M16 64C74 19 170 9 253 22C301 29 344 45 371 64" stroke="#D7A746" stroke-width="4.25" stroke-linecap="round"/>
+  <circle cx="373" cy="64" r="4.5" fill="#D7A746"/>
+  <text x="12" y="75" fill="#1E4E95" font-size="64" font-family="'Avenir Next', 'Montserrat', 'Segoe UI', Arial, sans-serif" font-weight="700" letter-spacing="0.5">Avrrio</text>
+</svg>

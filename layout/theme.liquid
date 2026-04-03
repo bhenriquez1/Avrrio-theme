@@ -8,6 +8,19 @@
 <body>
   <header class="site-header">
     <div class="site-header__inner section-shell">
+      <a href="/" class="site-header__brand" aria-label="Avrrio home">
+        <picture>
+          <source media="(max-width: 640px)" srcset="{{ 'avrrio-logo-refined-compact.svg' | asset_url }}">
+          <img
+            src="{{ 'avrrio-logo-refined.svg' | asset_url }}"
+            alt="Avrrio"
+            class="site-header__logo"
+            width="220"
+            height="52"
+          >
+        </picture>
+      </a>
+
       <a href="/" class="site-header__brand">Avrrio</a>
       <nav class="site-header__nav" aria-label="Primary">
         <a href="/">Home</a>

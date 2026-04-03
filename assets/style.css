@@ -29,6 +29,7 @@ body {
 }
 
 .site-header__inner {
+  min-height: 84px;
   min-height: 72px;
   display: flex;
   align-items: center;
@@ -37,6 +38,16 @@ body {
 }
 
 .site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-header__logo {
+  display: block;
+  width: auto;
+  height: 44px;
+  max-width: min(48vw, 220px);
   color: var(--text-main);
   text-decoration: none;
   font-size: 22px;
@@ -351,6 +362,16 @@ body {
 
   .site-header__inner {
     min-height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .site-header__logo {
+    height: 36px;
+    max-width: min(60vw, 176px);
     padding-top: 14px;
     padding-bottom: 14px;
     flex-direction: column;
