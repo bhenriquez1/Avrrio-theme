@@ -1,0 +1,9 @@
+<div class="center">
+<h1>Avrrio Coffee</h1>
+{% for product in collection.products %}
+<div style="margin:20px;">
+<h2>{{ product.title }}</h2>
+<a href="{{ product.url }}">View Product</a>
+</div>
+{% endfor %}
+</div>
