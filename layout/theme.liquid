@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>{{ shop.name }}</title>
-{{ content_for_header }}
-{{ 'style.css' | asset_url | stylesheet_tag }}
+  <title>{{ shop.name }}</title>
+  {{ content_for_header }}
+  {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
-{{ content_for_layout }}
+  <header class="site-header">
+    <div class="site-header__inner section-shell">
+      <a href="/" class="site-header__brand">Avrrio</a>
+      <nav class="site-header__nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/collections/avrrio-coffee">Coffee</a>
+        <a href="/collections/all">Future</a>
+        <a href="/pages/about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  {{ content_for_layout }}
+
+  <footer class="site-footer">
+    <div class="site-footer__inner section-shell">
+      <h2 class="site-footer__title">About</h2>
+      <p>
+        Avrrio is a modern brand focused on building simple, reliable products for everyday life.
+        We start with coffee and grow from there.
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
