@@ -33,6 +33,9 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/">Home</a>
+        <a href="/pages/about">About</a>
+        <a href="/collections/all">Future</a>
+        <a href="/collections/avrrio-coffee">Catalog</a>
         <a href="/collections/avrrio-coffee">Catalog</a>
     <div class="site-header__inner section-shell">
       <a href="/" class="site-header__brand" aria-label="Avrrio home">
@@ -61,6 +64,20 @@
   {{ content_for_layout }}
 
   <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <div class="site-footer__brand">
+        <img src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio">
+        <p class="site-footer__handle">@Avrrio2026</p>
+      </div>
+
+      <div class="site-footer__meta">
+        <nav class="site-footer__nav" aria-label="Footer navigation">
+          <a href="/">Home</a>
+          <a href="/pages/about">About</a>
+          <a href="/collections/all">Catalog</a>
+        </nav>
+        <p>© 2026 Avrrio. All rights reserved.</p>
+      </div>
     <div class="wrap">
       <div class="site-footer__grid">
         <div class="site-footer__brand">
