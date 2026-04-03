@@ -1,6 +1,63 @@
-<div class="center">
-<img src="{{ 'avrrio-logo.png' | asset_url }}" style="max-width:180px;"><br>
-<h1>Avrrio Coffee</h1>
-<p>Simple. Strong. Daily Fuel.</p>
-<a href="/products/avrrio-french-roast" class="btn">Buy Now</a>
-</div>
+{% assign featured_collection = collections['avrrio-coffee'] %}
+{% assign featured_product = featured_collection.products.first %}
+{% if featured_product == blank %}
+  {% assign featured_product = all_products['avrrio-french-roast'] %}
+{% endif %}
+
+<main class="av-home">
+  <div class="av-container">
+    <section class="av-hero">
+      <div class="av-hero__content">
+        <p class="av-eyebrow">AVRRIO</p>
+        <h1 class="av-hero__title">Simple. Strong. Daily Fuel.</h1>
+        <p class="av-hero__text">
+          Avrrio starts with one thing done right — a dependable daily product.
+          Clean, consistent, and built for people who value quality without complication.
+        </p>
+
+        <div class="av-hero__actions">
+          <a href="/collections/all" class="av-btn av-btn--primary">Shop</a>
+          {% if featured_product %}
+            <a href="{{ featured_product.url }}" class="av-btn av-btn--secondary">View Product</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="av-hero__product">
+        <div class="av-product-card">
+          <div class="av-product-card__image-wrap">
+            {% if featured_product and featured_product.featured_image %}
+              <img
+                src="{{ featured_product.featured_image | image_url: width: 1200 }}"
+                alt="{{ featured_product.title | escape }}"
+                class="av-product-card__image"
+              >
+            {% else %}
+              <div class="av-product-card__placeholder">Product image</div>
+            {% endif %}
+          </div>
+
+          <div class="av-product-card__body">
+            {% if featured_product %}
+              <p class="av-product-card__label">Our first product</p>
+              <h2 class="av-product-card__title">{{ featured_product.title }}</h2>
+              <p class="av-product-card__desc">
+                A clean, reliable daily product designed to become part of your routine.
+              </p>
+              <p class="av-product-card__price">{{ featured_product.price | money }}</p>
+              <a href="{{ featured_product.url }}" class="av-btn av-btn--primary av-btn--full">
+                View Product
+              </a>
+            {% else %}
+              <p class="av-product-card__label">Our first product</p>
+              <h2 class="av-product-card__title">Coming soon</h2>
+              <p class="av-product-card__desc">
+                Add a product to the avrrio-coffee collection to show it here automatically.
+              </p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>

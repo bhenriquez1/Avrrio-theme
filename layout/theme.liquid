@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ request.locale.iso_code }}">
 <head>
-<title>{{ shop.name }}</title>
-{{ content_for_header }}
-{{ 'style.css' | asset_url | stylesheet_tag }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>
+    {% if page_title != blank %}
+      {{ page_title }}
+      {% if current_tags %} — tagged "{{ current_tags | join: ', ' }}"{% endif %}
+      {% if current_page != 1 %} — Page {{ current_page }}{% endif %}
+      {% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}
+    {% else %}
+      {{ shop.name }}
+    {% endif %}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {{ content_for_header }}
+  {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
-{{ content_for_layout }}
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="{{ shop.name }}">
+        <img src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio">
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/pages/about">About</a>
+        <a href="/collections/all">Future</a>
+        <a href="/collections/avrrio-coffee">Catalog</a>
+      </nav>
+    </div>
+  </header>
+
+  {{ content_for_layout }}
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <div class="site-footer__brand">
+        <img src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio">
+        <p class="site-footer__handle">@Avrrio2026</p>
+      </div>
+
+      <div class="site-footer__meta">
+        <nav class="site-footer__nav" aria-label="Footer navigation">
+          <a href="/">Home</a>
+          <a href="/pages/about">About</a>
+          <a href="/collections/all">Catalog</a>
+        </nav>
+        <p>© 2026 Avrrio. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
