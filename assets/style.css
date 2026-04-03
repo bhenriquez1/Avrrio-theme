@@ -1,3 +1,8 @@
+/* RESET */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111;
 :root {
   --text-main: #161616;
   --text-muted: #4f4f4f;
@@ -10,6 +15,35 @@
   box-sizing: border-box;
 }
 
+/* LAYOUT */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* HEADER */
+.site-header {
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+/* LOGO */
+.brand img {
+  height: 32px;
+  display: block;
+}
+
+/* NAV */
+.site-nav {
+  display: flex;
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -63,6 +97,39 @@ img {
 }
 
 .site-nav a {
+  text-decoration: none;
+  color: #111;
+  font-size: 15px;
+}
+
+.site-nav a:hover {
+  opacity: 0.6;
+}
+
+/* FOOTER */
+.site-footer {
+  border-top: 1px solid #eee;
+  margin-top: 80px;
+  padding: 40px 0;
+  background: #fff;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  height: 24px;
+}
+
+.footer-right {
+  font-size: 13px;
+  color: #666;
+}
+
+/* HOMEPAGE */
   font-size: 15px;
   font-weight: 600;
   color: #111111;
@@ -79,6 +146,9 @@ img {
 }
 
 .av-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 48px;
   max-width: 1280px;
   margin: 0 auto;
   padding: 40px 24px 48px;
@@ -256,6 +326,7 @@ img {
   color: #111111;
 }
 
+/* PRODUCT PAGE */
 .site-footer {
   background: #111111;
   color: #ffffff;
@@ -464,6 +535,7 @@ img {
 }
 
 .product-page {
+  max-width: 1200px;
   max-width: 1280px;
   margin: 0 auto;
   padding: 48px 24px;
@@ -784,6 +856,9 @@ img {
 }
 
 @media (max-width: 860px) {
+  .header-inner {
+    height: auto;
+    padding: 18px 0;
   .site-header .wrap {
     flex-direction: column;
     align-items: flex-start;
@@ -795,6 +870,10 @@ img {
     gap: 18px;
   }
 
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   .site-footer__inner {
     flex-direction: column;
     align-items: flex-start;

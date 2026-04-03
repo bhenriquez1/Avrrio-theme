@@ -1,3 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ page_title }}</title>
+
+  {{ content_for_header }}
+
+  <link rel="stylesheet" href="{{ 'style.css' | asset_url }}">
 <!DOCTYPE html>
 <html lang="{{ request.locale.iso_code }}">
 <head>
@@ -24,7 +34,49 @@
   {{ content_for_header }}
   {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
+
 <body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+
+      <!-- LEFT: LOGO -->
+      <a href="/" class="brand">
+        <img src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio">
+      </a>
+
+      <!-- RIGHT: NAV -->
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/pages/catalog">Catalog</a>
+        <a href="/pages/future">Future</a>
+        <a href="/pages/about">About</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    {{ content_for_layout }}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+
+      <div class="footer-left">
+        <img src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio" class="footer-logo">
+      </div>
+
+      <div class="footer-right">
+        <p>© 2026 Avrrio. All rights reserved.</p>
+      </div>
+
+    </div>
+  </footer>
+
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="/" aria-label="{{ shop.name }}">
