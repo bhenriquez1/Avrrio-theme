@@ -1,9 +1,59 @@
-<div class="center">
-<h1>Avrrio Coffee</h1>
-{% for product in collection.products %}
-<div style="margin:20px;">
-<h2>{{ product.title }}</h2>
-<a href="{{ product.url }}">View Product</a>
-</div>
-{% endfor %}
+<div class="catalog-wrap">
+
+  <div class="catalog-header">
+    <p class="catalog-eyebrow">Catalog</p>
+    <h1 class="catalog-title">{{ collection.title }}</h1>
+  </div>
+
+  <nav class="catalog-categories" aria-label="Product categories">
+    <a href="/collections/all"
+       class="catalog-cat{% if collection.handle == 'all' %} is-active{% endif %}">
+      All
+    </a>
+    <a href="/collections/avrrio-coffee"
+       class="catalog-cat{% if collection.handle == 'avrrio-coffee' %} is-active{% endif %}">
+      Coffee
+    </a>
+    <a href="/collections/energy"
+       class="catalog-cat{% if collection.handle == 'energy' %} is-active{% endif %}">
+      Energy
+    </a>
+    <a href="/collections/daily-focus"
+       class="catalog-cat{% if collection.handle == 'daily-focus' %} is-active{% endif %}">
+      Daily Focus
+    </a>
+    <a href="/collections/bundles"
+       class="catalog-cat{% if collection.handle == 'bundles' %} is-active{% endif %}">
+      Bundles
+    </a>
+  </nav>
+
+  {% if collection.products.size > 0 %}
+    <div class="catalog-grid">
+      {% for product in collection.products %}
+        <article class="catalog-card">
+          <a href="{{ product.url }}" class="catalog-card__image-link">
+            {% if product.featured_image %}
+              <img
+                src="{{ product.featured_image | image_url: width: 600 }}"
+                alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                class="catalog-card__image"
+                loading="lazy"
+              >
+            {% else %}
+              <div class="catalog-card__placeholder">Product image</div>
+            {% endif %}
+          </a>
+          <div class="catalog-card__body">
+            <h2 class="catalog-card__title">{{ product.title }}</h2>
+            <p class="catalog-card__price">{{ product.price | money }}</p>
+            <a href="{{ product.url }}" class="btn">View Product</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="catalog-empty">Products coming soon.</p>
+  {% endif %}
+
 </div>
