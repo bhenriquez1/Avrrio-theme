@@ -1,11 +1,49 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>{{ shop.name }}</title>
-{{ content_for_header }}
-{{ 'style.css' | asset_url | stylesheet_tag }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>
+    {% if page_title != blank %}
+      {{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}
+    {% else %}
+      {{ shop.name }}
+    {% endif %}
+  </title>
+
+  {{ content_for_header }}
+  {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
-{{ content_for_layout }}
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a href="/" class="site-logo" aria-label="Avrrio home">
+        <img src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio">
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/pages/about">About</a>
+        <a href="/pages/future">Future</a>
+        <a href="/collections/avrrio-coffee">Catalog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="MainContent">
+    {{ content_for_layout }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <a href="/" class="footer-logo" aria-label="Avrrio home">
+        <img src="{{ 'avrrio-logo.png' | asset_url }}" alt="Avrrio">
+      </a>
+
+      <p class="footer-copy">© 2026 Avrrio. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
